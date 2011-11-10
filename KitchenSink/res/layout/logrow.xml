@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_height="wrap_content" android:layout_width="fill_parent" android:background="#fff">
+  <TextView android:layout_height="wrap_content" android:id="@+id/textTag"
+    android:text="TAG" android:layout_weight="1" android:layout_width="fill_parent" android:textColor="#333"></TextView>
+  <TextView android:layout_height="wrap_content" android:text="Message"
+    android:id="@+id/textMsg" android:layout_width="fill_parent"
+    android:layout_weight="1" android:textColor="#333"></TextView>
+</LinearLayout>

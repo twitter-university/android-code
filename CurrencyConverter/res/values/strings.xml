@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="convert">Convert</string>
+	<string name="convert_failure">Failed to convert. Please try again.</string>
+	<string name="clear_input">Clear</string>
+	<string name="copy_result">Copy</string>
+	<string name="copy_result_message">Copied %s to clipboard</string>
+	<string name="input_amount_hint">The amount to convert</string>
+	<string name="currency_converter_message">Enjoy using world\'s 100th best currency converter.
+	</string>
+	<string name="app_name">Currency Converter</string>
+</resources>

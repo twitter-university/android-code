@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+    android:title="Start Service"
+    android:id="@+id/item_start_service"></item>
+  <item
+    android:title="Stop Service"
+    android:id="@+id/item_stop_service"></item>
+  <item
+    android:title="Refresh"
+    android:id="@+id/item_refresh"></item>
+  <item
+    android:title="Send Broadcast"
+    android:id="@+id/item_send_broadcast"></item>
+  <item
+    android:id="@+id/item_location"
+    android:title="Location"></item>
+  <item
+    android:id="@+id/item_insert"
+    android:title="Insert"></item>
+  <item
+    android:id="@+id/item_query"
+    android:title="Query"></item>
+
+</menu>

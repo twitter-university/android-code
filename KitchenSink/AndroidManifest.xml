@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.marakana" android:versionCode="1" android:versionName="1.0">
+  <application android:icon="@drawable/icon" android:label="@string/app_name">
+
+    <activity android:name=".KitchenSink" android:label="@string/app_name">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".LogsActivity" />
+    <activity android:name=".SensorActivity" />
+    <activity android:name=".TelephonyActivity" />
+    <activity android:name=".WifiActivity" />
+    <activity android:name=".FileActivity" />
+    <activity android:name=".LocationActivity" />
+    <activity android:name=".FibActivity" />
+    <activity android:name=".LoggerActivity" />
+
+    <service android:name=".HeartbeatService" />
+    <service android:name=".LoggerService">
+      <intent-filter>
+        <action android:name="SandiaRemoteService" />
+      </intent-filter>
+    </service>
+
+    <receiver android:name=".BootReceiver">
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED" />
+      </intent-filter>
+    </receiver>
+
+  </application>
+  
+  <uses-sdk android:minSdkVersion="4" />
+  
+  <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+  <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+</manifest> 

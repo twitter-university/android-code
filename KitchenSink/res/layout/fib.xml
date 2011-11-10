@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_height="fill_parent" android:layout_width="fill_parent"
+  android:background="#fff" android:orientation="vertical">
+  <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:layout_gravity="center" android:textColor="#333" android:textSize="30dp"
+    android:text="Some Title" android:id="@+id/textTitle"></TextView>
+  <LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent" android:gravity="center"><EditText android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/editN" android:hint="@string/hintEnterN"></EditText><Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/buttonGo" android:text="@string/buttonGo"></Button></LinearLayout><ScrollView android:layout_height="fill_parent" android:layout_width="fill_parent">
+    <TextView android:textColor="#333" android:layout_gravity="center"
+      android:layout_height="fill_parent" android:layout_width="fill_parent"
+      android:gravity="center" android:textSize="25dp" android:text="Waiting..."
+      android:id="@+id/textOut"></TextView>
+  </ScrollView>
+
+
+
+
+</LinearLayout>

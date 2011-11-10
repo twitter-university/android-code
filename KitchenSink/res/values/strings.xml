@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="buttonLogger">Logger</string>
+    <string name="titleFib">Fib</string>
+    <string name="hintEnterN">Enter N</string>
+    <string name="buttonGo">Go</string>
+    <string name="buttonLocation">Location</string>
+    <string name="buttonFiles">Files</string>
+    <string name="titleFiles">Files</string>
+    <string name="buttonWifi">Wifi</string>
+    <string name="buttonTelephony">Telephony</string>
+    <string name="buttonSensor">Sensor</string>
+    <string name="titleSensor">Sensor</string>
+	<string name="hello">Kitchen Sink</string>
+	<string name="app_name">Kitchen Sink</string>
+	<string name="titleKitchenSink">Kitchen Sink</string>
+	<string name="buttonStartService">Start Service</string>
+<string name="buttonStopService">Stop Service</string>
+<string name="buttonLogs">View Logs</string>
+<string name="titleLogs">Logs</string>
+</resources>

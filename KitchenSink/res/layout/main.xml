@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical" android:layout_width="fill_parent"
+  android:layout_height="fill_parent" android:background="#fff">
+  <!-- <1> -->
+  <TextView android:layout_width="fill_parent"
+    android:layout_height="wrap_content" android:textColor="#333"
+    android:text="@string/titleKitchenSink" android:textSize="30dp"
+    android:gravity="center" />
+  <!-- <2> -->
+  <TableLayout android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:stretchColumns="*">
+    <!-- <3> -->
+    <TableRow>
+      <Button android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:text="@string/buttonStartService"
+        android:id="@+id/buttonStartService"></Button>
+      <Button android:layout_height="wrap_content" android:id="@+id/buttonStopService"
+        android:layout_width="fill_parent" android:text="@string/buttonStopService"></Button>
+    </TableRow>
+    <TableRow>
+      <Button android:layout_height="wrap_content"
+        android:layout_width="fill_parent" android:text="@string/buttonLogs"
+        android:id="@+id/buttonLogs"></Button>
+      <Button android:layout_height="wrap_content" android:id="@+id/buttonSensor"
+        android:layout_width="fill_parent" android:text="@string/buttonSensor"></Button>
+    </TableRow>
+    <TableRow>
+      <Button android:layout_height="wrap_content" android:id="@+id/buttonTelephony"
+        android:text="@string/buttonTelephony" android:layout_width="fill_parent"></Button>
+      <Button android:layout_height="wrap_content" android:id="@+id/buttonWifi"
+        android:layout_width="fill_parent" android:text="@string/buttonWifi"></Button>
+    </TableRow>
+    <TableRow>
+      <Button android:layout_height="wrap_content" android:id="@+id/buttonFiles"
+        android:text="@string/buttonFiles" android:layout_width="fill_parent"></Button>
+      <Button android:layout_height="wrap_content" android:id="@+id/buttonLocation"
+        android:text="@string/buttonLocation" android:layout_width="fill_parent"></Button>
+    </TableRow>
+    <TableRow>
+      <Button android:layout_height="wrap_content" android:id="@+id/buttonFib"
+        android:text="@string/titleFib" android:layout_width="fill_parent"></Button>
+      <Button android:layout_height="wrap_content" android:id="@+id/buttonLogger"
+        android:text="@string/buttonLogger" android:layout_width="fill_parent"></Button>
+    </TableRow>
+  </TableLayout>
+</LinearLayout>
