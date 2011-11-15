@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical" android:layout_width="match_parent"
+  android:layout_height="match_parent" android:gravity="center_horizontal">
+  
+  <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:text="@string/app_name" android:textSize="50sp" android:gravity="center" />
+  <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:text="Authenticate" android:onClick="onClickAuthorize"
+    android:textSize="40sp"></Button>
+  <EditText android:layout_height="wrap_content" android:layout_width="match_parent"
+    android:id="@+id/status" android:textSize="40sp" android:hint="What's up?"></EditText>
+  <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:text="Tweet" android:onClick="onClickTweet" android:textSize="40sp"></Button>
+  <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:text="Get Status" android:textSize="40sp" android:onClick="onClickGetStatus"></Button>
+
+</LinearLayout>
