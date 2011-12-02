@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical" android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+
+  <TextView android:layout_height="wrap_content"
+    android:layout_width="wrap_content" android:text="@string/titleMySecure"
+    style="@style/title"></TextView>
+
+  <ScrollView android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout android:orientation="vertical"
+      android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+      <Button android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:textSize="20sp"
+        android:text="@string/buttonStartService" android:id="@+id/buttonStartService"></Button>
+      <Button android:layout_height="wrap_content" android:id="@+id/buttonStopService"
+        android:text="@string/buttonStopService" android:layout_width="fill_parent"
+        android:textSize="20sp"></Button>
+      <Button android:layout_height="wrap_content" android:id="@+id/buttonPrefs"
+        android:text="@string/buttonPrefs" android:layout_width="fill_parent"
+        android:textSize="20sp"></Button>
+      <Button android:layout_height="wrap_content"
+        android:layout_width="fill_parent" android:textSize="20sp"
+        android:id="@+id/buttonBackup" android:text="@string/buttonBackup"></Button>
+      <Button android:layout_height="wrap_content" android:id="@+id/buttonFileList"
+        android:text="@string/buttonFileList" android:layout_width="fill_parent"
+        android:textSize="20sp"></Button>
+      <Button android:layout_height="wrap_content" android:id="@+id/buttonAppList"
+        android:text="@string/buttonAppList" android:layout_width="fill_parent"
+        android:textSize="20sp"></Button>
+
+    </LinearLayout>
+
+  </ScrollView>
+
+
+
+</LinearLayout>

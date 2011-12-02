@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.marakana.android.fibonacciservice" android:versionCode="1"
+	android:versionName="1.0">
+	<uses-sdk android:minSdkVersion="8" />
+
+	<permission
+		android:name="com.marakana.android.fibonacciservice.USE_FIBONACCI_SERVICE"
+		android:protectionLevel="signature" />
+
+	<permission
+		android:name="com.marakana.android.fibonacciservice.USE_SLOW_FIBONACCI_SERVICE"
+		android:protectionLevel="dangerous"
+		android:label="@string/slow_fib_service_perm_label"
+		android:description="@string/slow_fib_service_perm_description" />
+
+	<application android:icon="@drawable/icon" android:label="@string/app_name">
+		<service android:name=".FibonacciService"
+			android:permission="com.marakana.android.fibonacciservice.USE_FIBONACCI_SERVICE">
+			<intent-filter>
+				<action android:name="com.marakana.android.fibonaccicommon.IFibonacciService" />
+			</intent-filter>
+		</service>
+	</application>
+</manifest>

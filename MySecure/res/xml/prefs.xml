@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <EditTextPreference android:title="User name"
+    android:key="username" android:summary="Twitter user name" />
+  <EditTextPreference android:title="Password"
+    android:key="password" android:summary="Your Twitter password" />
+
+</PreferenceScreen>

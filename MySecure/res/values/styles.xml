@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="title">
+    <item name="android:textSize">30sp</item>
+    <item name="android:gravity">center</item>
+    <item name="android:layout_gravity">center</item>
+    <item name="android:padding">10dp</item>
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+  </style>
+  <style name="button">
+    <item name="android:textSize">20dp</item>
+    <item name="android:padding">5dp</item>
+    <item name="android:layout_margin">5px</item>
+    <item name="android:layout_gravity">center</item>
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+  </style>
+</resources>

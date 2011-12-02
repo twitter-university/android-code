@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="titleAppList">App List</string>
+  <string name="buttonAppList">App List</string>
+  <string name="buttonBackup">Backup</string>
+  <string name="buttonFileList">File List</string>
+  <string name="titleFileList">File List</string>
+  <string name="buttonStopService">Stop Service</string>
+  <string name="buttonSupport">Call Support</string>
+  <string name="buttonPrefs">Preferences</string>
+  <string name="buttonStartService">Start Service</string>
+  <string name="hello">Hello World, MySecure!</string>
+  <string name="app_name">MySecure</string>
+  <string name="titleMySecure">MySecure</string>
+  <string name="sqlDropTable">drop table heartbeats;</string>
+</resources>
