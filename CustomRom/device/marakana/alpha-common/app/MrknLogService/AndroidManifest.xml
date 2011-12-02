@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.marakana.android.logservice"
+  android:versionCode="1"
+  android:versionName="1.0"
+  android:sharedUserId="android.uid.system">
+  <uses-sdk android:minSdkVersion="8" />
+  <uses-permission android:name="android.permission.READ_LOGS"/>
+  <application android:name=".LogServiceApp" android:persistent="true">
+    <uses-library android:name="com.marakana.android.service.log" android:required="true"/>
+    <uses-library android:name="com.marakana.android.lib.log" android:required="true"/>
+  </application>
+  <permission android:name="com.marakana.android.logservice.FLUSH_LOG"
+    android:protectionLevel="dangerous"
+    android:permissionGroup="android.permission-group.SYSTEM_TOOLS"
+    android:label="@string/flush_log_permission_label"
+    android:description="@string/flush_log_permission_description"/>
+</manifest>

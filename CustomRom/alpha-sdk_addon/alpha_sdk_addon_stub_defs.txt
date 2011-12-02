@@ -1,0 +1,3 @@
++com.marakana.android.lib.log.*
+-com.marakana.android.lib.log.Main
++com.marakana.android.service.log.*

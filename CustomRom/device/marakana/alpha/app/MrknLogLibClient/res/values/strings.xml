@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Marakana Log Lib Client</string>
+    <string name="log_utilization_message">Using %1$d of %2$d bytes of the log buffer</string>
+    <string name="flush_log_button">Flush Log Buffer</string>
+</resources>

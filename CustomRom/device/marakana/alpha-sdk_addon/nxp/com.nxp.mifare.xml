@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Devices that support MIFARE need to declare NXP's feature constant -->
+<permissions>
+  <feature name="com.nxp.mifare" />
+</permissions>

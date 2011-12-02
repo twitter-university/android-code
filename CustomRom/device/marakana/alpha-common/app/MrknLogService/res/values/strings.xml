@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="flush_log_permission_label">Flush Log</string>
+  <string name="flush_log_permission_description">Applications with this permission will be able 
+	to clear the logs, potentially covering their own tracks of malicious behavior.</string>
+</resources>
