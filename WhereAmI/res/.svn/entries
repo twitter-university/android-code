@@ -1,0 +1,43 @@
+10
+
+dir
+141
+svn+ssh://marko@svn.marakana.com/srv/svn/courseware/trunk/android/code/WhereAmI/res
+svn+ssh://marko@svn.marakana.com/srv/svn/courseware
+
+
+
+2010-07-07T16:50:59.089696Z
+117
+marko
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+0834041a-a189-0410-b23f-9fe5cf95aaf5
+
+values
+dir
+
+drawable-hdpi
+dir
+
+drawable-ldpi
+dir
+
+drawable-mdpi
+dir
+
+layout
+dir
+
