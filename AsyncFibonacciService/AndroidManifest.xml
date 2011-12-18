@@ -6,24 +6,11 @@
 
     <uses-sdk android:minSdkVersion="8" />
 
-    <permission
-        android:name="com.marakana.android.fibonacciservice.USE_FIBONACCI_SERVICE"
-        android:protectionLevel="signature" />
-
-    <permission
-        android:description="@string/use_slow_fibonacci_service_perm_description"
-        android:label="@string/use_slow_fibonacci_service_perm_label"
-        android:name="com.marakana.android.fibonacciservice.USE_SLOW_FIBONACCI_SERVICE"
-        android:permissionGroup="android.permission-group.COST_MONEY"
-        android:protectionLevel="dangerous" />
-
     <application
         android:icon="@drawable/icon"
         android:label="@string/app_name" >
-        <service
-            android:name=".FibonacciService"
-            android:permission="com.marakana.android.fibonacciservice.USE_FIBONACCI_SERVICE" >
-            <intent-filter >
+        <service android:name=".FibonacciService" >
+            <intent-filter>
                 <action android:name="com.marakana.android.fibonaccicommon.IFibonacciService" /> <!-- <1> -->
             </intent-filter>
         </service>

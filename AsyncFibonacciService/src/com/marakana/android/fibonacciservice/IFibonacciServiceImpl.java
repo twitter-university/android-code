@@ -1,7 +1,6 @@
 
 package com.marakana.android.fibonacciservice;
 
-import android.content.Context;
 import android.os.RemoteException;
 import android.util.Log;
 
@@ -13,22 +12,6 @@ import com.marakana.android.fibonaccinative.FibLib;
 
 public class IFibonacciServiceImpl extends IFibonacciService.Stub {
     private static final String TAG = "IFibonacciServiceImpl";
-
-    private final Context context;
-
-    public IFibonacciServiceImpl(Context context) {
-        this.context = context;
-    }
-
-    private long checkSlow(long n) {
-        if (n > 10) {
-            this.context.enforceCallingOrSelfPermission(
-                    Manifest.permission.USE_SLOW_FIBONACCI_SERVICE,
-                    "You must have the following permission to use slow fibonacci operations: "
-                            + Manifest.permission.USE_SLOW_FIBONACCI_SERVICE);
-        }
-        return n;
-    }
 
     @Override
     public void fib(FibonacciRequest request, IFibonacciServiceResponseListener listener)
@@ -42,13 +25,13 @@ public class IFibonacciServiceImpl extends IFibonacciService.Stub {
                 result = FibLib.fibJI(n);
                 break;
             case FibonacciRequest.RECURSIVE_JAVA_TYPE:
-                result = FibLib.fibJR(checkSlow(n));
+                result = FibLib.fibJR(n);
                 break;
             case FibonacciRequest.ITERATIVE_NATIVE_TYPE:
                 result = FibLib.fibNI(n);
                 break;
             case FibonacciRequest.RECURSIVE_NATIVE_TYPE:
-                result = FibLib.fibNR(checkSlow(n));
+                result = FibLib.fibNR(n);
                 break;
             default:
                 result = 0;

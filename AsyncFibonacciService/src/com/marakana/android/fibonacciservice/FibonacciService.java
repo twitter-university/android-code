@@ -15,7 +15,7 @@ public class FibonacciService extends Service { // <1>
     @Override
     public void onCreate() {
         super.onCreate();
-        this.service = new IFibonacciServiceImpl(this); // <3>
+        this.service = new IFibonacciServiceImpl(); // <3>
         Log.d(TAG, "onCreate()'ed"); // <5>
     }
 

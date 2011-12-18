@@ -5,6 +5,7 @@
 *.dll
 *.exe
 *.o
+*.o.d
 *.so
 
 # Packages #
@@ -24,6 +25,8 @@
 ##################
 */gen/*
 */bin/*
+*/obj/*
+*/libs/*
 
 # Logs and databases #
 ######################

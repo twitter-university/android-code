@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="hello">Hello World!</string>
-	<string name="app_name">FibonacciService</string>
-	<string name="slow_fib_service_perm_label">Use slow Fibonacci operations</string>
-	<string name="slow_fib_service_perm_description">Applications with this permission can take a very
-		long time to run, and drain your battery.</string>
+	<string name="app_name">Fibonacci Service</string>
 </resources>

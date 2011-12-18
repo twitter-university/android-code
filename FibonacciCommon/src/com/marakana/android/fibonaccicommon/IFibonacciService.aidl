@@ -1,8 +1,12 @@
 package com.marakana.android.fibonaccicommon;
 
+import com.marakana.android.fibonaccicommon.FibonacciRequest;
+import com.marakana.android.fibonaccicommon.FibonacciResponse;
+
 interface IFibonacciService {
-	long fibJI(long n);
-	long fibJR(long n);
-	long fibNI(long n);
-	long fibNR(long n);
+    long fibJR(in long n);
+    long fibJI(in long n);
+    long fibNR(in long n);
+    long fibNI(in long n);
+    FibonacciResponse fib(in FibonacciRequest request);
 }

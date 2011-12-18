@@ -1,52 +1,57 @@
+
 package com.marakana.android.fibonacciservice;
 
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.os.RemoteException;
 import android.util.Log;
 
-import com.marakana.android.fibonacci.FibLib;
+import com.marakana.android.fibonaccicommon.FibonacciRequest;
+import com.marakana.android.fibonaccicommon.FibonacciResponse;
 import com.marakana.android.fibonaccicommon.IFibonacciService;
+import com.marakana.android.fibonaccinative.FibLib;
 
 public class IFibonacciServiceImpl extends IFibonacciService.Stub {
-	private static final long SLOW_N = 10;
+    private static final String TAG = "IFibonacciServiceImpl";
 
-	private static final String TAG = "IFibonacciServiceImpl";
+    public long fibJI(long n) {
+        Log.d(TAG, "fibJI()");
+        return FibLib.fibJI(n);
+    }
 
-	private final Context context;
+    public long fibJR(long n) {
+        Log.d(TAG, "fibJR()");
+        return FibLib.fibJR(n);
+    }
 
-	public IFibonacciServiceImpl(Context context) {
-		this.context = context;
-	}
+    public long fibNI(long n) {
+        Log.d(TAG, "fibNI()");
+        return FibLib.fibNI(n);
+    }
 
-	private long checkSlow(long n) {
-		if (n > SLOW_N
-				&& this.context
-						.checkCallingPermission(Manifest.permission.USE_SLOW_FIBONACCI_SERVICE) != PackageManager.PERMISSION_GRANTED) {
-			throw new SecurityException("You need to use "
-					+ Manifest.permission.USE_SLOW_FIBONACCI_SERVICE);
-		} else {
-			return n;
-		}
-	}
+    public long fibNR(long n) {
+        Log.d(TAG, "fibNR()");
+        return FibLib.fibNR(n);
+    }
 
-	public long fibJI(long n) throws RemoteException {
-		Log.d(TAG, "Running fibJI(" + n + ")");
-		return FibLib.fibJI(n);
-	}
-
-	public long fibJR(long n) throws RemoteException {
-		Log.d(TAG, "Running fibJR(" + n + ")");
-		return FibLib.fibJR(checkSlow(n));
-	}
-
-	public long fibNI(long n) throws RemoteException {
-		Log.d(TAG, "Running fibNI(" + n + ")");
-		return FibLib.fibNI(n);
-	}
-
-	public long fibNR(long n) throws RemoteException {
-		Log.d(TAG, "Running fibNR(" + n + ")");
-		return FibLib.fibNR(checkSlow(n));
-	}
+    public FibonacciResponse fib(FibonacciRequest request) {
+        Log.d(TAG, "fib()");
+        long timeInMillis = System.currentTimeMillis();
+        long result;
+        switch (request.getType()) {
+            case FibonacciRequest.ITERATIVE_JAVA_TYPE:
+                result = this.fibJI(request.getN());
+                break;
+            case FibonacciRequest.RECURSIVE_JAVA_TYPE:
+                result = this.fibJR(request.getN());
+                break;
+            case FibonacciRequest.ITERATIVE_NATIVE_TYPE:
+                result = this.fibNI(request.getN());
+                break;
+            case FibonacciRequest.RECURSIVE_NATIVE_TYPE:
+                result = this.fibNR(request.getN());
+                break;
+            default:
+                return null;
+        }
+        timeInMillis = System.currentTimeMillis() - timeInMillis;
+        return new FibonacciResponse(result, timeInMillis);
+    }
 }

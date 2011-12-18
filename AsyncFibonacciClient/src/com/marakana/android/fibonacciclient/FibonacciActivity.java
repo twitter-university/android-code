@@ -30,6 +30,12 @@ public class FibonacciActivity extends Activity implements OnClickListener, Serv
 
     private static final String TAG = "FibonacciActivity";
 
+    // the id of a message to our response handler
+    private static final int RESPONSE_MESSAGE_ID = 1;
+
+    // the id of a progress dialog that we'll be creating
+    private static final int PROGRESS_DIALOG_ID = 1;
+
     private EditText input; // our input n
 
     private Button button; // trigger for fibonacci calcualtion
@@ -39,6 +45,40 @@ public class FibonacciActivity extends Activity implements OnClickListener, Serv
     private TextView output; // destination for fibonacci result
 
     private IFibonacciService service; // reference to our service
+
+    // the responsibility of the responseHandler is to take messages
+    // from the responseListener (defined below) and display their content
+    // in the UI thread
+    private final Handler responseHandler = new Handler() {
+        @Override
+        public void handleMessage(Message message) {
+            switch (message.what) {
+                case RESPONSE_MESSAGE_ID:
+                    Log.d(TAG, "Handling response");
+                    FibonacciActivity.this.output.setText((String) message.obj);
+                    FibonacciActivity.this.removeDialog(PROGRESS_DIALOG_ID);
+                    break;
+            }
+        }
+    };
+
+    // the responsibility of the responseListener is to receive call-backs
+    // from the service when our FibonacciResponse is available
+    private final IFibonacciServiceResponseListener responseListener = new IFibonacciServiceResponseListener.Stub() {
+
+        // this method is executed on one of the pooled binder threads
+        @Override
+        public void onResponse(FibonacciResponse response) throws RemoteException {
+            String result = String.format("%d in %d ms", response.getResult(),
+                    response.getTimeInMillis());
+            Log.d(TAG, "Got response: " + result);
+            // since we cannot update the UI from a non-UI thread,
+            // we'll send the result to the responseHandler (defined above)
+            Message message = FibonacciActivity.this.responseHandler.obtainMessage(
+                    RESPONSE_MESSAGE_ID, result);
+            FibonacciActivity.this.responseHandler.sendMessage(message);
+        }
+    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,9 +96,9 @@ public class FibonacciActivity extends Activity implements OnClickListener, Serv
     }
 
     @Override
-    protected void onResume() {
-        Log.d(TAG, "onResume()'ed");
-        super.onResume();
+    protected void onStart() {
+        Log.d(TAG, "onStart()'ed");
+        super.onStart();
         // Bind to our FibonacciService service, by looking it up by its name
         // and passing ourselves as the ServiceConnection object
         // We'll get the actual IFibonacciService via a callback to
@@ -70,9 +110,9 @@ public class FibonacciActivity extends Activity implements OnClickListener, Serv
     }
 
     @Override
-    protected void onPause() {
-        Log.d(TAG, "onPause()'ed");
-        super.onPause();
+    protected void onStop() {
+        Log.d(TAG, "onStop()'ed");
+        super.onStop();
         // No need to keep the service bound (and alive) any longer than
         // necessary
         super.unbindService(this);
@@ -98,6 +138,8 @@ public class FibonacciActivity extends Activity implements OnClickListener, Serv
     protected Dialog onCreateDialog(int id) {
         switch (id) {
             case PROGRESS_DIALOG_ID:
+                // this dialog will be opened in onClick(...) and
+                // dismissed/removed by responseHandler.handleMessage(...)
                 ProgressDialog dialog = new ProgressDialog(this);
                 dialog.setMessage(super.getText(R.string.progress_text));
                 dialog.setIndeterminate(true);
@@ -105,7 +147,6 @@ public class FibonacciActivity extends Activity implements OnClickListener, Serv
             default:
                 return super.onCreateDialog(id);
         }
-
     }
 
     // handle button clicks
@@ -145,39 +186,13 @@ public class FibonacciActivity extends Activity implements OnClickListener, Serv
         FibonacciRequest request = new FibonacciRequest(n, type);
         try {
             Log.d(TAG, "Submitting request...");
-            this.service.fib(request, responseListener);
+            // submit the request; the response will come to responseListener
+            this.service.fib(request, this.responseListener);
             Log.d(TAG, "Submited request");
+            // this dialog will be dismissed/removed by responseHandler
             super.showDialog(PROGRESS_DIALOG_ID);
         } catch (RemoteException e) {
             Log.wtf(TAG, "Failed to communicate with the service", e);
         }
     }
-
-    private static final int RESPONSE_MESSAGE_ID = 1;
-
-    private static final int PROGRESS_DIALOG_ID = 1;
-
-    private final IFibonacciServiceResponseListener responseListener = new IFibonacciServiceResponseListener.Stub() {
-
-        @Override
-        public void onResponse(FibonacciResponse response) throws RemoteException {
-            String result = String.format("%d in %d ms", response.getResult(),
-                    response.getTimeInMillis());
-            Log.d(TAG, "Got response: " + result);
-            responseHandler.sendMessage(responseHandler.obtainMessage(RESPONSE_MESSAGE_ID, result));
-        }
-    };
-
-    private final Handler responseHandler = new Handler() {
-        @Override
-        public void handleMessage(Message message) {
-            switch (message.what) {
-                case RESPONSE_MESSAGE_ID:
-                    Log.d(TAG, "Handling response");
-                    FibonacciActivity.this.output.setText((String) message.obj);
-                    FibonacciActivity.this.removeDialog(PROGRESS_DIALOG_ID);
-                    break;
-            }
-        }
-    };
 }
