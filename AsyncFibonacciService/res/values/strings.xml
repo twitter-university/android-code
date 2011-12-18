@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Fibonacci Service</string>
+	<string name="use_slow_fibonacci_service_perm_label">Use Slow Fibonacci Operations</string>
+	<string name="use_slow_fibonacci_service_perm_description">Application with this permission can drain your battery!!!</string>
+</resources>
