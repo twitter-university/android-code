@@ -16,7 +16,7 @@ import android.widget.ToggleButton;
 public class DevicePolicyDemoActivity extends Activity implements
 		OnCheckedChangeListener {
 	static final String TAG = "DevicePolicyDemoActivity";
-	static final int ACTIVATION_REQUEST = 47;	// identifies our request id
+	static final int ACTIVATION_REQUEST = 47; // identifies our request id
 	DevicePolicyManager devicePolicyManager;
 	ComponentName demoDeviceAdmin;
 	ToggleButton toggleButton;
@@ -36,7 +36,10 @@ public class DevicePolicyDemoActivity extends Activity implements
 		demoDeviceAdmin = new ComponentName(this, DemoDeviceAdminReceiver.class);
 	}
 
-	/** Called when a button is clicked on. */
+	/**
+	 * Called when a button is clicked on. We have Lock Device and Reset Device
+	 * buttons that could invoke this method.
+	 */
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.button_lock_device:
@@ -48,41 +51,51 @@ public class DevicePolicyDemoActivity extends Activity implements
 		case R.id.button_reset_device:
 			// We reset the device - this will erase entire /data partition!
 			Toast.makeText(this, "Locking device...", Toast.LENGTH_LONG).show();
-			Log.d(TAG, "RESETing device now - all user data will be ERASED to factory settings");
+			Log.d(TAG,
+					"RESETing device now - all user data will be ERASED to factory settings");
 			devicePolicyManager.wipeData(ACTIVATION_REQUEST);
 			break;
 		}
 	}
 
-	/** Called when the state of toggle button changes. */
+	/**
+	 * Called when the state of toggle button changes. In this case, we send an
+	 * intent to activate the device policy administration.
+	 */
 	@Override
 	public void onCheckedChanged(CompoundButton button, boolean isChecked) {
 		if (isChecked) {
 			// Activate device administration
-			Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
-			intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, demoDeviceAdmin);
-			intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION, "Your boss told you to do this");
+			Intent intent = new Intent(
+					DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
+			intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN,
+					demoDeviceAdmin);
+			intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,
+					"Your boss told you to do this");
 			startActivityForResult(intent, ACTIVATION_REQUEST);
 		}
 		Log.d(TAG, "onCheckedChanged to: " + isChecked);
 	}
-	
-	/** Called when startActivityForResult() call is completed. */
+
+	/**
+	 * Called when startActivityForResult() call is completed. The result of
+	 * activation could be success of failure, mostly depending on user okaying
+	 * this app's request to administer the device.
+	 */
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-	    switch (requestCode) {
-	        case ACTIVATION_REQUEST:
-	            if (resultCode == Activity.RESULT_OK) {
-	                Log.i(TAG, "Administration enabled!");
-	                toggleButton.setChecked(true);
-	            } else {
-	                Log.i(TAG, "Administration enable FAILED!");
-	                toggleButton.setChecked(false);
-	            }
-	            return;
-	    }
-	    super.onActivityResult(requestCode, resultCode, data);
+		switch (requestCode) {
+		case ACTIVATION_REQUEST:
+			if (resultCode == Activity.RESULT_OK) {
+				Log.i(TAG, "Administration enabled!");
+				toggleButton.setChecked(true);
+			} else {
+				Log.i(TAG, "Administration enable FAILED!");
+				toggleButton.setChecked(false);
+			}
+			return;
+		}
+		super.onActivityResult(requestCode, resultCode, data);
 	}
-
 
 }
