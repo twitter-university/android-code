@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<sdk:sdk-addon
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:sdk="http://schemas.android.com/sdk/android/addon/1">
+
+    <sdk:add-on>
+        <sdk:name>Alpha Add-On</sdk:name>
+        <sdk:api-level>15</sdk:api-level>
+        <sdk:vendor>Marakana</sdk:vendor>
+        <sdk:revision>1</sdk:revision>
+        <sdk:description>Android + Marakana Alpha Add-on, API 15, revision 1 </sdk:description>
+        <sdk:desc-url>http://marakana.com/external/android/sdk-addon/</sdk:desc-url>
+        <sdk:uses-license ref="marakana-android-addon-license" />
+        <sdk:archives>
+            <sdk:archive os="any">
+                <sdk:size>96382546</sdk:size>
+                <sdk:checksum type="sha1">5cec8cc3f3064441cb96a50e2b8aa528681ffc78</sdk:checksum>
+                <sdk:url>marakana_alpha_sdk_addon_api-15_r1.zip</sdk:url>
+            </sdk:archive>
+        </sdk:archives>
+        <sdk:libs>
+        </sdk:libs>
+    </sdk:add-on>
+
+    <sdk:license type="text" id="marakana-android-addon-license">
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this SDK addon except in compliance with the License.
+You may obtain a copy of the License at: http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+    </sdk:license>
+</sdk:sdk-addon>
+
