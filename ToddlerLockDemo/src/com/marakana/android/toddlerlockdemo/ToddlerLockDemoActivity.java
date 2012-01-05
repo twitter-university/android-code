@@ -1,6 +1,7 @@
 package com.marakana.android.toddlerlockdemo;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,9 +12,6 @@ import android.widget.Toast;
 
 public class ToddlerLockDemoActivity extends Activity {
 	static final String TAG = "ToddlerLockDemoActivity";
-	static final String LAUNCHER = "com.marakana.android.toddlerlockdemo"; // TODO we should dynamically do this
-	PackageManager pm;
-
 	Toast toastLocked, toastUnlocked;
 	int state = 0;
 
@@ -22,7 +20,7 @@ public class ToddlerLockDemoActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		pm = getPackageManager();
-		
+
 		// Go full screen
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -62,17 +60,21 @@ public class ToddlerLockDemoActivity extends Activity {
 
 	/** Locks the device, preventing use of home and back buttons. */
 	private void lock() {
-		
+
 		toastLocked.show();
 		Log.d(TAG, "Device locked");
 	}
 
+	static final ComponentName COMPONENT = new ComponentName(
+			"com.marakana.android.toddlerlockdemo", "ToddlerLockDemoActivity");
+	PackageManager pm;
+
 	/** Unlocks the device. */
 	private void unlock() {
-		pm.setApplicationEnabledSetting(LAUNCHER,
-				PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+		pm.setComponentEnabledSetting(COMPONENT, PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 				PackageManager.DONT_KILL_APP);
 
+		startActivity(ActivateToddlerLockActivity.homeIntent);
 		
 		toastUnlocked.show();
 		Log.d(TAG, "Device unlocked");

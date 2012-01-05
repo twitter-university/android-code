@@ -6,8 +6,8 @@
 
     <uses-sdk android:minSdkVersion="10" />
 
-    <uses-permission android:name="android.permission.CHANGE_COMPONENT_ENABLED_STATE"/>
-    
+    <uses-permission android:name="android.permission.CHANGE_COMPONENT_ENABLED_STATE" />
+
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -18,8 +18,18 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.HOME"/>
+
+                <category android:name="android.intent.category.HOME" />
                 <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name=".ActivateToddlerLockActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
