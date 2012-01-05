@@ -44,3 +44,8 @@ Thumbs.db
 # Eclipse Artifacts #
 #####################
 .metadata/*
+
+# Samples #
+##########
+*ApiDemos*
+Home/*
