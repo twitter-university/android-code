@@ -1,7 +1,12 @@
-# Copied from system/core/rootdir/etc/init.goldfish.rc
+on early-init
+    export EXTERNAL_STORAGE /mnt/sdcard
+    mkdir /mnt/sdcard 0000 system system
+    # for backwards compatibility
+    symlink /mnt/sdcard /sdcard
 
 on boot
     setprop ARGH ARGH
+    setprop net.eth0.gw 10.0.2.2
     setprop net.eth0.dns1 10.0.2.3
     setprop net.gprs.local-ip 10.0.2.15
     setprop ro.radio.use-ppp no
@@ -17,6 +22,12 @@ on boot
 # disable some daemons the emulator doesn't want
     stop dund
     stop akmd
+
+# start essential services
+    start qemud
+    start goldfish-logcat
+    start goldfish-setup
+    start mrknlogd
 
     setprop ro.setupwizard.mode EMULATOR
 
@@ -38,6 +49,20 @@ on boot
 # something else.
 
 service goldfish-setup /system/etc/init.goldfish.sh
+    user root
+    group root
+    oneshot
+
+# The qemu-props program is used to set various system
+# properties on boot. It must be run early during the boot
+# process to avoid race conditions with other daemons that
+# might read them (e.g. surface flinger), so define it in
+# class 'core'
+#
+service qemu-props /system/bin/qemu-props
+    class core
+    user root
+    group root
     oneshot
 
 service qemud /system/bin/qemud
@@ -48,13 +73,14 @@ service qemud /system/bin/qemud
 # program to check wether it runs on the emulator
 # if it does, it redirects its output to the device
 # named by the androidboot.console kernel option
-# if not, is simply exit immediately
+# if not, is simply exits immediately
 
 service goldfish-logcat /system/bin/logcat -Q
     oneshot
 
-# Marakana's custom daemon
-service mrkn_alive /system/bin/mrkn_alive
+# Marakana's custom log-flushing daemon
+service mrknlogd /system/bin/mrknlogd 60
     user system
-    group system
+    group log
     oneshot
+

@@ -9,6 +9,5 @@ PRODUCT_MODEL := Full Marakana Alpha Image for Emulator
 include $(call all-makefiles-under,$(LOCAL_PATH))
 include device/marakana/alpha-common/alpha.mk
 
-PRODUCT_PACKAGES += \
-	MrknLogLibClient \
-	MrknLogServiceClient \
+PRODUCT_PACKAGES += MrknLogLibClient 
+PRODUCT_PACKAGES += MrknLogServiceClient 

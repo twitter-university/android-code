@@ -1,15 +1,6 @@
 #ifndef _MRKNLOG_H_
 #define _MRKNLOG_H_
 
-#include <cutils/logger.h>
-#include <cutils/log.h>
-#include <string.h>
-#include <fcntl.h>
-#include <errno.h>
-#include <sys/ioctl.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-
 #ifdef __cplusplus
 extern "C" {
 #endif

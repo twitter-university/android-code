@@ -2,9 +2,7 @@
 include device/marakana/alpha-common/alpha.mk
 
 # List of modules to include in the the add-on system image
-PRODUCT_PACKAGES += \
-	com.marakana.android.lib.log_doc \
-	com.marakana.android.service.log_doc \
+#PRODUCT_PACKAGES += 
 
 # The name of this add-on (for the SDK)
 PRODUCT_SDK_ADDON_NAME := marakana_alpha_addon
@@ -24,11 +22,11 @@ PRODUCT_SDK_ADDON_COPY_MODULES := \
 PRODUCT_SDK_ADDON_STUB_DEFS := $(LOCAL_PATH)/alpha_sdk_addon_stub_defs.txt
 
 # Define the name of the documentation to generate for this add-on's SDK
-PRODUCT_SDK_ADDON_DOC_MODULE := \
+PRODUCT_SDK_ADDON_DOC_MODULES := \
 	com.marakana.android.service.log_doc 
 
 # Since the add-on is an emulator, we also need to explicitly copy the kernel to images
-PRODUCT_SDK_ADDON_COPY_FILES += $(LOCAL_KERNEL):images/kernel-qemu
+PRODUCT_SDK_ADDON_COPY_FILES += $(LOCAL_KERNEL):images/armeabi-v7a/kernel-qemu
 
 # This add-on extends the default sdk product.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/sdk.mk)

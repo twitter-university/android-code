@@ -1,6 +1,15 @@
 #define LOG_FILE "/dev/log/main"
 #define LOG_TAG "MrknLog"
 
+#include <cutils/logger.h>
+#include <cutils/log.h>
+#include <string.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <sys/ioctl.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+
 #include "libmrknlog.h"
 
 static int ioctl_log(int mode, int request) {

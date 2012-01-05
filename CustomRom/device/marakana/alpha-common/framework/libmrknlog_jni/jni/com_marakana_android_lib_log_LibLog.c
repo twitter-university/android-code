@@ -3,10 +3,10 @@
 
 static void ThrowLibLogException(JNIEnv *env, const char *message) {
   jclass class = (*env)->FindClass(env, "com/marakana/android/lib/log/LibLogException");
-  if (class != NULL) {
+  if (class) {
     (*env)->ThrowNew(env, class, message);
+    (*env)->DeleteLocalRef(env, class);
   }
-  (*env)->DeleteLocalRef(env, class);
 }
 
 JNIEXPORT void JNICALL Java_com_marakana_android_lib_log_LibLog_flushLog
