@@ -33,6 +33,7 @@ namespace com_marakana_android_fibonaccinative {
         return result;
     }
 
+    // see http://docs.oracle.com/javase/6/docs/technotes/guides/jni/spec/types.html
     static JNINativeMethod method_table[] = {
         { "fibNR", "(J)J", (void*)fibNR },
         { "fibNI", "(J)J", (void*)fibNI }
@@ -41,6 +42,7 @@ namespace com_marakana_android_fibonaccinative {
 
 using namespace com_marakana_android_fibonaccinative;
 
+// See dalvik/libnativehelper/JNIHelp.cpp
 static int jniRegisterNativeMethods(JNIEnv* env, const char* className,
         const JNINativeMethod* gMethods, int numMethods) {
     jclass clazz = env->FindClass(className);
@@ -58,6 +60,7 @@ extern "C" jint JNI_OnLoad(JavaVM* vm, void* reserved) {
     if (vm->GetEnv(reinterpret_cast<void**>(&env), JNI_VERSION_1_6) != JNI_OK) {
         return -1;
     } else {
+        // see http://java.sun.com/docs/books/jni/html/other.html#29535
         if (jniRegisterNativeMethods(env, "com/marakana/android/fibonaccinative/FibLib",
                 method_table, NELEM(method_table)) != 0) {
             return -2;
