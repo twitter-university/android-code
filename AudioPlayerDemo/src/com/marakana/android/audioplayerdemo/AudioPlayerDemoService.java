@@ -105,17 +105,18 @@ public class AudioPlayerDemoService extends Service implements OnPreparedListene
     public void onPrepared(MediaPlayer mp) {
         Log.d(TAG, "Media player is ready (prepared). Requesting audio focus.");
         if (this.requestAudioFocus()) {
-            // set up our service as foreground
-            PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 0, new Intent(
-                    getApplicationContext(), AudioPlayerDemoActivity.class),
+            Log.d(TAG, "Starting as foreground service");
+            PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0,
+                    new Intent(getApplicationContext(), AudioPlayerDemoActivity.class),
                     PendingIntent.FLAG_UPDATE_CURRENT);
-            Notification notification = new Notification();
-            notification.icon = android.R.drawable.ic_media_play;
+            Notification notification = new Notification(android.R.drawable.ic_media_play,
+                    getText(R.string.foreground_service_notificaton_ticker_text),
+                    System.currentTimeMillis());
+            notification.setLatestEventInfo(getApplicationContext(),
+                    getText(R.string.foreground_service_notification_title),
+                    getText(R.string.foreground_service_notification_message), pendingIntent);
             notification.flags |= Notification.FLAG_ONGOING_EVENT;
-            notification.setLatestEventInfo(getApplicationContext(), "AudioPlayer", "Playing...",
-                    pi);
-            Log.d(TAG, "Starting as foreground.");
-            super.startForeground(0, notification);
+            super.startForeground(1, notification);
 
             this.mediaPlayer.setOnCompletionListener(this);
             Log.d(TAG, "Starting playback");
