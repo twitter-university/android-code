@@ -6,8 +6,9 @@ include $(call all-subdir-makefiles)
 LOCAL_KERNEL := $(MY_PATH)/kernel
 PRODUCT_COPY_FILES += $(LOCAL_KERNEL):kernel
 
-# Copy our init.goldfish.rc file over the existing one (since ours contains extra changes)
-PRODUCT_COPY_FILES += $(MY_PATH)/init.goldfish.rc:root/init.goldfish.rc
+# Copy our init and ueventd configuration files to the root file system (ramdisk)
+PRODUCT_COPY_FILES += $(MY_PATH)/init.marakanaalphaboard.rc:root/init.marakanaalphaboard.rc
+PRODUCT_COPY_FILES += $(MY_PATH)/ueventd.marakanaalphaboard.rc:root/ueventd.marakanaalphaboard.rc
 
 PRODUCT_PACKAGES += libmrknlog
 PRODUCT_PACKAGES += mrknlog
